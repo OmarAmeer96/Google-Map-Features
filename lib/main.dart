@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_features/home_page.dart';
+import 'package:google_maps_features/widgets/custom_google_map.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const TestGoogleMapsWithFlutter());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TestGoogleMapsWithFlutter extends StatelessWidget {
+  const TestGoogleMapsWithFlutter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Google Map',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Google Map Home Page'),
+      home: CustomGoogleMap(),
     );
   }
 }
