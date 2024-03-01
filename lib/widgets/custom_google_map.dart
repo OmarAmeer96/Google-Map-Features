@@ -22,14 +22,27 @@ class _CustomGoogleMapState extends State<CustomGoogleMap> {
 
   @override
   Widget build(BuildContext context) {
-    return GoogleMap(
-      initialCameraPosition: initialCameraPosition,
-      cameraTargetBounds: CameraTargetBounds(
-        LatLngBounds(
-          northeast: const LatLng(30.828787393718397, 31.01620939037795),
-          southwest: const LatLng(30.76265444706483, 30.971685935161435),
+    return Stack(
+      children: [
+        GoogleMap(
+          initialCameraPosition: initialCameraPosition,
+          cameraTargetBounds: CameraTargetBounds(
+            LatLngBounds(
+              northeast: const LatLng(30.828787393718397, 31.01620939037795),
+              southwest: const LatLng(30.76265444706483, 30.971685935161435),
+            ),
+          ),
         ),
-      ),
+        Positioned(
+          bottom: 16,
+          left: 16,
+          right: 16,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Text("Change Location"),
+          ),
+        ),
+      ],
     );
   }
 }
