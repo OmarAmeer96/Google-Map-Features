@@ -18,6 +18,7 @@ class _CustomGoogleMapState extends State<CustomGoogleMap> {
       target: LatLng(30.79900787528476, 31.00206213176501),
       zoom: 13,
     );
+
     super.initState();
   }
 
@@ -36,37 +37,23 @@ class _CustomGoogleMapState extends State<CustomGoogleMap> {
         GoogleMap(
           onMapCreated: (controller) {
             googleMapController = controller;
+            initMapStyle();
           },
           initialCameraPosition: initialCameraPosition,
-          // cameraTargetBounds: CameraTargetBounds(
-          //   LatLngBounds(
-          //     northeast: const LatLng(30.828787393718397, 31.01620939037795),
-          //     southwest: const LatLng(30.76265444706483, 30.971685935161435),
-          //   ),
-          // ),
-
-          // "Normal" is the defaulf MapType
           mapType: MapType.normal,
-        ),
-        Positioned(
-          bottom: 16,
-          left: 16,
-          right: 16,
-          child: ElevatedButton(
-            onPressed: () {
-              // The class is named "CameraUpdate" as it update the whole camera attributes like position, zoom, ... . not just the Latlng().
-              CameraPosition newLocation = const CameraPosition(
-                target: LatLng(24.714896340717083, 46.68578759605556),
-                zoom: 13,
-              );
-              googleMapController.animateCamera(
-                CameraUpdate.newCameraPosition(newLocation),
-              );
-            },
-            child: const Text("Change Location"),
-          ),
         ),
       ],
     );
+  }
+
+  void initMapStyle() async {
+    var nightMapStyle = await DefaultAssetBundle.of(context)
+        .loadString('assets/map_styles/night_map_style.json');
+    // var lightMapStyle = await DefaultAssetBundle.of(context)
+    //     .loadString('assets/map_styles/light_map_style.json');
+    // var midnightCommanderMapStyle = await DefaultAssetBundle.of(context)
+    //     .loadString('assets/map_styles/midnight_commander_map_style.json');
+
+    googleMapController.setMapStyle(nightMapStyle);
   }
 }
