@@ -44,6 +44,9 @@ class _CustomGoogleMapState extends State<CustomGoogleMap> {
           //     southwest: const LatLng(30.76265444706483, 30.971685935161435),
           //   ),
           // ),
+
+          // "Normal" is the defaulf MapType
+          mapType: MapType.normal,
         ),
         Positioned(
           bottom: 16,
